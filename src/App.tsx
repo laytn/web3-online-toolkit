@@ -14,7 +14,7 @@ const routes = [
 
 function App() {
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <Routes>
         {routes.map(({ path, element }) => (
           <Route key={path} path={path} element={element} />
