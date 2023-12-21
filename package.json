@@ -14,6 +14,7 @@
     "@types/react": "^18.2.45",
     "@types/react-dom": "^18.2.18",
     "bootstrap": "^5.3.2",
+    "gh-pages": "^6.1.0",
     "js-sha3": "^0.9.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -32,7 +33,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "deploy": "gh-pages -d build",
+    "predeploy": "npm run build"
   },
   "eslintConfig": {
     "extends": [
@@ -54,5 +56,6 @@
   },
   "devDependencies": {
     "typescript": "^5.0.4"
-  }
+  },
+  "homepage": "https://laytn.github.io/web3-online-toolkit.git"
 }
