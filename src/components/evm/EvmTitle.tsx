@@ -1,6 +1,5 @@
-import { Box, Select, MenuItem, FormControl, InputLabel } from "@mui/material";
+import { Box, Select, MenuItem, FormControl, InputLabel, SelectChangeEvent } from "@mui/material";
 import { useContext } from "react";
-import { SelectChangeEvent } from "@mui/material";
 import InfoContext from "../../contexts/InfoContext";
 import { useNavigate } from "react-router-dom";
 import { EVM_CHAINS, EVM_FUNCS } from "../../stores/evmData";
