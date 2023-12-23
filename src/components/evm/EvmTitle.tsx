@@ -1,11 +1,11 @@
 import { Box, Select, MenuItem, FormControl, InputLabel, SelectChangeEvent } from "@mui/material";
-import { useContext } from "react";
-import InfoContext from "../../contexts/InfoContext";
 import { useNavigate } from "react-router-dom";
 import { EVM_CHAINS, EVM_FUNCS } from "../../stores/evmData";
+import useInfoStore from "../../states/infoStore";
 
 const EvmTitle = () => {
-    const { chainName, funcName, setChainName, setFuncName } = useContext(InfoContext)
+    const { chainName, funcName, setChainName, setFuncName } = useInfoStore();
+
     const navigate = useNavigate();
 
     const handleSelectChainChange = (event: SelectChangeEvent<string>) => {
@@ -57,4 +57,3 @@ const EvmTitle = () => {
 
 export default EvmTitle;
 
-// context로 상태관리하지 않아도 됨

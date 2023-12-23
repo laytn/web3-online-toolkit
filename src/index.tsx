@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { InfoProvider } from './contexts/InfoContext';
 import { WagmiConfig, createConfig, configureChains, mainnet } from 'wagmi'
 
 import { InjectedConnector } from 'wagmi/connectors/injected'
@@ -40,11 +39,9 @@ const config = createConfig({
 
 
 root.render(
-  <InfoProvider>
-    <WagmiConfig config={config}>
-      <App />
-    </WagmiConfig>
-  </InfoProvider>
+  <WagmiConfig config={config}>
+    <App />
+  </WagmiConfig>
 );
 
 // If you want to start measuring performance in your app, pass a function
