@@ -1,18 +1,14 @@
 import { Box, Grid, Select, MenuItem, FormControl, InputLabel, SelectChangeEvent } from "@mui/material"
 import Header from "../Header"
-import { DIGIT, MNEMONIC_LANGAGE, MNEMONIC_PATH } from "../../stores/commonData"
+import { DIGIT, MNEMONIC_LANGAGE } from "../../stores/commonData"
 import { useState } from "react"
-import { generateMnemonic, mnemonicToSeed, wordlists } from "bip39"
-import crypto from 'crypto-browserify';
-import { hdkey } from 'ethereumjs-wallet'
-import useInfoStore from "../../states/infoStore"
+import useMnemonicGenerator from "../../hooks/useMnemonicGenerator"
 
 const MnemonicConverter = () => {
     const [langage, setLangage] = useState<string>(MNEMONIC_LANGAGE[0])
     const [digit, setDigit] = useState<string>(DIGIT[0])
-    const [mnemonic, setMnemonic] = useState<string>()
-    const [privateKey, setPrivateKey] = useState<string>()
-    const { chainName } = useInfoStore();
+
+    const { mnemonic, privateKey } = useMnemonicGenerator(digit, langage)
 
     const handleLangageChange = (event: SelectChangeEvent<string>) => {
         setLangage(event.target.value);
@@ -20,46 +16,6 @@ const MnemonicConverter = () => {
     const handleDigitChange = (event: SelectChangeEvent<string>) => {
         setDigit(event.target.value);
     };
-
-    const onClickSubmit = () => {
-        const rng = (size: number) => {
-            return crypto.randomBytes(size);
-        };
-        let len;
-        switch (digit) {
-            case '12':
-                len = 128
-                break;
-            case '24':
-                len = 256
-                break;
-            default:
-                len = 128;
-        }
-        let coinPath: number = MNEMONIC_PATH[chainName.toUpperCase()];
-
-        if (langage === MNEMONIC_LANGAGE[0]) {
-            const mnemonic: string = generateMnemonic(len, rng, wordlists.english)
-            setMnemonic(mnemonic)
-            mnemonicToSeed(mnemonic, "ian-dev").then(seed => {
-                const masterKey = hdkey.fromMasterSeed(seed);
-                const path = `m/44'/${coinPath}'/0'/0/0`;
-                const wallet = masterKey.derivePath(path).getWallet();
-                setPrivateKey(wallet.getPrivateKeyString())
-            })
-
-        } else if (langage === MNEMONIC_LANGAGE[1]) {
-            const mnemonic = generateMnemonic(len, rng, wordlists.korean)
-            setMnemonic(mnemonic)
-            mnemonicToSeed(mnemonic, "ian-dev").then(seed => {
-                const masterKey = hdkey.fromMasterSeed(seed);
-                const path = `m/44'/${coinPath}'/0'/0/0`;
-                const wallet = masterKey.derivePath(path).getWallet();
-                setPrivateKey(wallet.getPrivateKeyString())
-            })
-        }
-
-    }
 
     return (
         <Grid>
@@ -105,12 +61,6 @@ const MnemonicConverter = () => {
                                 ))}
                             </Select>
                         </FormControl>
-                    </Box>
-                    <Box sx={{ width: "100px" }} />
-                    <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-                        <button className="btn btn-primary" onClick={onClickSubmit}>
-                            submit
-                        </button>
                     </Box>
                 </Grid>
                 <Box sx={{ height: "50px" }} />
