@@ -1,9 +1,13 @@
-import { Box, Grid, Select, MenuItem, FormControl, InputLabel, SelectChangeEvent } from "@mui/material"
+import { Box, Grid, SelectChangeEvent } from "@mui/material"
 import Header from "../Header"
 import { DIGIT, MNEMONIC_LANGAGE } from "../../stores/commonData"
-import { useState } from "react"
+import React, { useState } from "react"
 import useMnemonicGenerator from "../../hooks/useMnemonicGenerator"
 import SelectBox from "../SelectBox"
+
+const centerFlex: React.CSSProperties = { display: "flex", alignItems: "center", justifyContent: "center" }
+const titleStyle: React.CSSProperties = { ...centerFlex, fontSize: "20px" }
+const contentStyle: React.CSSProperties = { ...centerFlex, height: "100px", width: "500px", }
 
 const MnemonicConverter = () => {
     const [langage, setLangage] = useState<string>(MNEMONIC_LANGAGE[0])
@@ -21,30 +25,30 @@ const MnemonicConverter = () => {
     return (
         <Grid>
             <Header />
-            <Box sx={{ height: "100px", fontWeight: 700, fontSize: "30px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <Box sx={{ height: "100px", fontWeight: 700, fontSize: "30px", ...centerFlex }}>
                 MnemonicConverter
             </Box>
-            <Grid sx={{ display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", }}>
+            <Grid sx={{ ...centerFlex, flexDirection: "column", }}>
                 <Grid sx={{ height: "100px", display: "flex", }}>
-                    <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <Box sx={{ ...centerFlex }}>
                         <SelectBox value={langage} handleChange={handleLangageChange} options={MNEMONIC_LANGAGE} label="langage" />
                     </Box>
                     <Box sx={{ width: "50px" }} />
-                    <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <Box sx={{ ...centerFlex }}>
                         <SelectBox value={digit} handleChange={handleDigitChange} options={DIGIT} label="digit" />
                     </Box>
                 </Grid>
                 <Box sx={{ height: "50px" }} />
-                <Box sx={{ fontSize: "20px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <Box sx={titleStyle}>
                     mnemonic
                 </Box>
-                <Box sx={{ height: "100px", width: "500px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <Box sx={contentStyle}>
                     {mnemonic}
                 </Box>
-                <Box sx={{ fontSize: "20px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <Box sx={titleStyle}>
                     private key
                 </Box>
-                <Box sx={{ height: "100px", width: "500px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <Box sx={contentStyle}>
                     {privateKey}
                 </Box>
             </Grid>
