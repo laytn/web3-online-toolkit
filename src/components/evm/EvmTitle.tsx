@@ -2,6 +2,7 @@ import { Box, Select, MenuItem, FormControl, InputLabel, SelectChangeEvent } fro
 import { useNavigate } from "react-router-dom";
 import { EVM_CHAINS, EVM_FUNCS } from "../../stores/evmData";
 import useInfoStore from "../../states/infoStore";
+import SelectBox from "../SelectBox";
 
 const EvmTitle = () => {
     const { chainName, funcName, setChainName, setFuncName } = useInfoStore();
@@ -19,25 +20,10 @@ const EvmTitle = () => {
 
     return (
         <Box sx={{ height: "75px", display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
-                <InputLabel id="demo-simple-select-standard-label">Chain</InputLabel>
-                <Select
-                    labelId="demo-simple-select-standard-label"
-                    id="demo-simple-select-standard"
-                    value={chainName}
-                    onChange={handleSelectChainChange}
-                    label="Chain"
-                >
-                    {EVM_CHAINS.map((func) => (
-                        <MenuItem key={func} value={func}>
-                            {func}
-                        </MenuItem>
-                    ))}
-                </Select>
-            </FormControl>
+            <SelectBox value={chainName} handleChange={handleSelectChainChange} options={EVM_CHAINS} label="chain" />
             <Box sx={{ width: "50px" }} />
             <FormControl sx={{ width: "300px" }}>
-                <InputLabel id="select-label">Funcs</InputLabel>
+                <InputLabel id="select-label">funcs</InputLabel>
                 <Select
                     labelId="select-label"
                     value={funcName}
