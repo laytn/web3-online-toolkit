@@ -4,7 +4,7 @@ import Title from "./Title"
 import { useNavigate } from "react-router-dom";
 import WalletProvider from "../providers/WalletProvider";
 
-const SUPPORT_CHAINS = ["Evm", "Near", "Apptos"]
+const SUPPORT_CHAINS = ["Evm"]
 
 const Header = () => {
     const navigate = useNavigate();
