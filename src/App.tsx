@@ -3,6 +3,9 @@ import CheckSumAddress from "./components/evm/CheckSumAddress";
 import UnitConverter from "./components/evm/UnitConverter";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MnemonicConverter from "./components/evm/MnemonicConverter";
+import HexConverter from "./components/evm/HexConverter";
+
+
 
 const routes = [
   { path: "/", element: <UnitConverter /> },
@@ -10,6 +13,8 @@ const routes = [
   { path: "/evm/unitConvert", element: <UnitConverter /> },
   { path: "/evm/checksumAddress", element: <CheckSumAddress /> },
   { path: "/evm/mnemonicConverter", element: <MnemonicConverter /> },
+  { path: "/evm/hexConverter", element: <HexConverter /> },
+
 ];
 
 
