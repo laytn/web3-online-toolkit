@@ -1,13 +1,23 @@
 import { Box, Grid } from "@mui/material"
 import Header from "../Header"
 import InputBox from "../InputBox"
+import { useState } from "react"
 
 const centerFlex: React.CSSProperties = { display: "flex", alignItems: "center", justifyContent: "center" }
-const titleStyle: React.CSSProperties = { ...centerFlex, fontSize: "20px" }
-const contentStyle: React.CSSProperties = { ...centerFlex, height: "100px", width: "500px", }
 
-const hexConverter = () => {
+const HexConverter = () => {
+    const [decimal, setDecimal] = useState<string>();
+    const [hex, setHex] = useState<string>();
 
+    const handleDecimalChange = (value: string) => {
+        setDecimal(value);
+        setHex(parseInt(value, 10).toString(16));
+    };
+
+    const handleHexChange = (value: string) => {
+        setHex(value);
+        setDecimal(parseInt(value, 16).toString(10));
+    };
     return (
         <Grid>
             <Header />
@@ -15,11 +25,10 @@ const hexConverter = () => {
                 HexConverter
             </Box>
             <Grid sx={{ ...centerFlex, flexDirection: "column", }}>
-                <Box sx={titleStyle}>10 to hex</Box>
                 <Grid sx={{ ...centerFlex, marginTop: "20px" }}>
-                    <InputBox boxStyle={{ width: "300px", minWidth: "100px" }} placeholder="10" inputType="number" />
+                    <InputBox boxStyle={{ width: "300px", minWidth: "100px" }} onChangeValue={handleDecimalChange} placeholder="10" dataValue={decimal} inputType="number" />
                     <Box sx={{ width: "50px" }} />
-                    <Box sx={{ fontSize: "20px" }}>   Hex:</Box>
+                    <InputBox boxStyle={{ width: "300px", minWidth: "100px" }} onChangeValue={handleHexChange} placeholder="Hex" dataValue={hex} inputType="string" />
                 </Grid>
             </Grid>
         </Grid >
@@ -27,4 +36,4 @@ const hexConverter = () => {
 
 }
 
-export default hexConverter
+export default HexConverter

@@ -1,6 +1,6 @@
 import { Box, Grid } from "@mui/material"
 import Header from "../Header"
-import React, { useState } from "react"
+import { useState } from "react"
 import * as conversionUtils from "../../utils/web3Utils";
 import InputBox from "../InputBox";
 
