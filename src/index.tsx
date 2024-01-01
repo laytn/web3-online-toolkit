@@ -6,22 +6,16 @@ import reportWebVitals from './reportWebVitals';
 import { WagmiConfig, createConfig, configureChains, mainnet } from 'wagmi'
 
 import { InjectedConnector } from 'wagmi/connectors/injected'
-import { jsonRpcProvider } from 'wagmi/providers/jsonRpc';
+import { publicProvider } from 'wagmi/providers/public'
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
-
 const { chains, publicClient } = configureChains(
   [mainnet],
-  [
-    jsonRpcProvider({
-      rpc: () => ({
-        http: "QUICKNODE_HTTP_PROVIDER_URL" // 👈 Replace this with your HTTP URL from the previous step
-      }),
-    })
-  ]
-);
+  [publicProvider()],
+)
 
 const config = createConfig({
   autoConnect: true,
