@@ -11,11 +11,21 @@ const HexConverter = () => {
     const [hex, setHex] = useState<string>();
 
     const handleDecimalChange = (value: string) => {
+        if (value === "") {
+            setDecimal("")
+            setHex("")
+            return;
+        }
         setDecimal(value);
         setHex(parseInt(value, 10).toString(16));
     };
 
     const handleHexChange = (value: string) => {
+        if (value === "") {
+            setDecimal("")
+            setHex("")
+            return;
+        }
         setHex(value);
         setDecimal(parseInt(value, 16).toString(10));
     };
