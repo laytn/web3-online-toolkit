@@ -17,6 +17,7 @@
     "@types/node": "^16.18.68",
     "@types/react": "^18.2.45",
     "@types/react-dom": "^18.2.18",
+    "@wagmi/core": "^1.4.12",
     "assert": "^2.1.0",
     "babel-jest": "^27.4.2",
     "babel-loader": "^8.2.3",

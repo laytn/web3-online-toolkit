@@ -4,23 +4,28 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { WagmiConfig, createConfig, configureChains, mainnet } from 'wagmi'
+import { klaytn } from '@wagmi/core/chains'
 
 import { InjectedConnector } from 'wagmi/connectors/injected'
 import { publicProvider } from 'wagmi/providers/public'
+import { MetaMaskConnector } from 'wagmi/connectors/metaMask'
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
 const { chains, publicClient } = configureChains(
-  [mainnet],
+  [mainnet, klaytn],
   [publicProvider()],
 )
 
 const config = createConfig({
-  autoConnect: true,
+  autoConnect: false,
   publicClient,
   connectors: [
+    new MetaMaskConnector({
+      chains,
+    }),
     new InjectedConnector({
       chains,
       options: {
@@ -30,6 +35,7 @@ const config = createConfig({
     })
   ]
 })
+
 
 
 root.render(
