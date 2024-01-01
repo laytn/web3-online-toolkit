@@ -3,6 +3,7 @@ import Header from "../Header"
 import InputBox from "../InputBox"
 import { isEvmAddress, toCheckSumAddress } from "../../utils/web3Utils"
 import { useState } from "react"
+import SubTitle from "../vac/SubTitle"
 
 const CheckSumAddress = () => {
     const [isChecksumAddress, setIsChecksumAddress] = useState<boolean>(false);
@@ -23,9 +24,7 @@ const CheckSumAddress = () => {
     return (
         <Grid>
             <Header />
-            <Box sx={{ height: "100px", fontWeight: 700, fontSize: "30px", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                CheckSumAddress
-            </Box>
+            <SubTitle title="CheckSumAddress" />
             <Grid sx={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
                 <Box sx={{ width: "30vw" }}>
                     <InputBox boxStyle={{ width: "100%", minWidth: "300px" }} placeholder="Address" onChangeValue={handleValueChange} />

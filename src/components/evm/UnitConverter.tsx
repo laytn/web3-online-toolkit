@@ -3,6 +3,7 @@ import Header from "../Header"
 import { useState } from "react"
 import * as conversionUtils from "../../utils/web3Utils";
 import InputBox from "../InputBox";
+import SubTitle from "../vac/SubTitle";
 
 const unitBox: React.CSSProperties = { height: "60px", width: "300px", display: "flex", alignItems: "flex-end", justifyContent: "left", color: "#696969", fontSize: "18px" }
 const inputBox: React.CSSProperties = { width: "35vw", display: "flex", alignItems: "center", justifyContent: "left" }
@@ -15,7 +16,6 @@ const UnitConverter = () => {
     const [weiHex, setWeiHex] = useState<string>();
     const [gweiHex, setGweiHex] = useState<string>();
     const [etherHex, setEtherHex] = useState<string>();
-
 
     const handleWeiChange = (value: string) => {
         if (value === "") {
@@ -69,9 +69,7 @@ const UnitConverter = () => {
     return (
         <Grid>
             <Header />
-            <Box sx={{ height: "100px", fontWeight: 700, fontSize: "30px", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                UnitConverter
-            </Box>
+            <SubTitle title="UnitConverter" />
             <Grid sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
                 <Grid sx={{ height: "300px", width: "50vw", minWidth: "600px" }}>
                     <Grid sx={{ height: "100px", display: "flex" }} >

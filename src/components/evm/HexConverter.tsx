@@ -2,6 +2,7 @@ import { Box, Grid } from "@mui/material"
 import Header from "../Header"
 import InputBox from "../InputBox"
 import { useState } from "react"
+import SubTitle from "../vac/SubTitle"
 
 const centerFlex: React.CSSProperties = { display: "flex", alignItems: "center", justifyContent: "center" }
 
@@ -21,9 +22,7 @@ const HexConverter = () => {
     return (
         <Grid>
             <Header />
-            <Box sx={{ height: "100px", fontWeight: 700, fontSize: "30px", ...centerFlex }}>
-                HexConverter
-            </Box>
+            <SubTitle title="HexConverter" />
             <Grid sx={{ ...centerFlex, flexDirection: "column", }}>
                 <Grid sx={{ ...centerFlex, marginTop: "20px" }}>
                     <InputBox boxStyle={{ width: "300px", minWidth: "100px" }} onChangeValue={handleDecimalChange} placeholder="10" dataValue={decimal} inputType="number" />

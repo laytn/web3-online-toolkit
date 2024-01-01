@@ -4,6 +4,7 @@ import { DIGIT, MNEMONIC_LANGAGE } from "../../stores/commonData"
 import React, { useState } from "react"
 import useMnemonicGenerator from "../../hooks/useMnemonicGenerator"
 import SelectBox from "../SelectBox"
+import SubTitle from "../vac/SubTitle"
 
 const centerFlex: React.CSSProperties = { display: "flex", alignItems: "center", justifyContent: "center" }
 const titleStyle: React.CSSProperties = { ...centerFlex, fontSize: "20px" }
@@ -25,9 +26,7 @@ const MnemonicConverter = () => {
     return (
         <Grid>
             <Header />
-            <Box sx={{ height: "100px", fontWeight: 700, fontSize: "30px", ...centerFlex }}>
-                MnemonicConverter
-            </Box>
+            <SubTitle title="MnemonicConverter" />
             <Grid sx={{ ...centerFlex, flexDirection: "column", }}>
                 <Grid sx={{ height: "100px", display: "flex", }}>
                     <Box sx={{ ...centerFlex }}>

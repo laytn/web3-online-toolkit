@@ -1,8 +1,9 @@
 import React from 'react';
-import { Box, Grid, Table, TableBody, TableCell, TableContainer, TableRow } from '@mui/material';
+import { Grid, Table, TableBody, TableCell, TableContainer, TableRow } from '@mui/material';
 import Header from '../Header';
 import { useNetwork, useFeeData } from 'wagmi';
 import ErrorWallet from '../ErrorWallet';
+import SubTitle from "../vac/SubTitle"
 
 
 const centerFlex: React.CSSProperties = { display: 'flex', alignItems: 'center', justifyContent: 'center' };
@@ -17,9 +18,7 @@ const GasFeeData = () => {
         return (
             <Grid>
                 <Header />
-                <Box sx={{ height: '100px', fontWeight: 700, fontSize: '30px', ...centerFlex }}>
-                    GasFeeData
-                </Box>
+                <SubTitle title="GasFeeData" />
                 <ErrorWallet />
             </Grid>
         );
@@ -36,9 +35,7 @@ const GasFeeData = () => {
     return (
         <Grid>
             <Header />
-            <Box sx={{ height: '100px', fontWeight: 700, fontSize: '30px', ...centerFlex }}>
-                GasFeeData
-            </Box>
+            <SubTitle title="GasFeeData" />
             <Grid sx={{ ...centerFlex }}>
                 <TableContainer sx={{ height: "500px", minWidth: "400px", width: "600px" }}>
                     <Table>
