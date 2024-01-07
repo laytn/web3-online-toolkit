@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import MnemonicConverter from "./components/evm/MnemonicConverter";
 import HexConverter from "./components/evm/HexConverter";
 import GasFeeData from "./components/evm/GasFeeData";
+import SignatureRecover from "./components/evm/SignatureRecover";
 
 
 
@@ -16,6 +17,7 @@ const routes = [
   { path: "/evm/mnemonicConverter", element: <MnemonicConverter /> },
   { path: "/evm/hexConverter", element: <HexConverter /> },
   { path: "/evm/gasFeeData", element: <GasFeeData /> },
+  { path: "/evm/signatureRecover", element: <SignatureRecover /> },
 ];
 
 

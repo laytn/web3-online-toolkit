@@ -1,5 +1,5 @@
 export const EVM_CHAINS = ["Ethereum", "Polygon", "Klaytn"];
-export const EVM_FUNCS = ["unitConvert", "checksumAddress", "mnemonicConverter", "hexConverter", "gasFeeData"];
+export const EVM_FUNCS = ["unitConvert", "checksumAddress", "mnemonicConverter", "hexConverter", "gasFeeData", "signatureRecover"];
 export const EVM_CHAIN_IDS: { [key: string]: number } = {
     "Ethereum": 1,
     "Polygon": 137,
