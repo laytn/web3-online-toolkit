@@ -74,6 +74,7 @@
     "typescript": "^5.0.4",
     "wagmi": "^1.4.12",
     "web-vitals": "^2.1.4",
+    "web3": "^4.10.0",
     "webpack": "^5.64.4",
     "webpack-dev-server": "^4.6.0",
     "webpack-manifest-plugin": "^4.0.2",
